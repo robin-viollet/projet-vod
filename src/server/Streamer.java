@@ -27,7 +27,7 @@ public class Streamer {
     // Read bytes from a file and stream them to the client
     private final Function<IClientBox, Void> movieBytes = client -> {
                                                         // Change the path to a video file vlc can read
-        try(FileInputStream in = new FileInputStream("/home/paragoumba/Videos/Rick and Morty Season 6 Episode 3 – Bethic Twinstinct - Watc.mp4")){
+        try(FileInputStream in = new FileInputStream("/tmp/video.webm")){
             byte[] buffer = new byte[4096];
 
             while (in.read(buffer) != 0){
@@ -39,7 +39,7 @@ public class Streamer {
         return null;
     };
 
-    // Stream bytes to the client using either one of the two above methods
+    // Stream bytes to the client using either one of the two methods above
     // An executor is used in order to handle each client on a separate thread
     public void stream(IClientBox client){
         executor.execute(() -> movieBytes.apply(client));
