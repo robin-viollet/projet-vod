@@ -1,5 +1,7 @@
 package server;
 
+import server.stubs.IConnection;
+
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;

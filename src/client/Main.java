@@ -1,9 +1,9 @@
 package client;
 
-import server.IConnection;
-import server.IVODService;
-import server.MovieDesc;
-import server.MovieDescPlus;
+import server.stubs.IConnection;
+import server.stubs.IMovieDesc;
+import server.stubs.IMovieDescExtended;
+import server.stubs.IVODService;
 import server.exceptions.InvalidCredentialsException;
 import server.exceptions.SignInFailed;
 
@@ -74,13 +74,13 @@ public class Main {
                     System.out.println("Movies catalog: ");
 
                     int i = 0;
-                    List<MovieDesc> catalog = v.viewCatalog();
+                    List<IMovieDesc> catalog = v.viewCatalog();
 
-                    for (MovieDesc m : catalog){
-                        System.out.print("- [" + i + "] " + m.movieName + " (" + m.isbn + "): " + m.synopsis);
+                    for (IMovieDesc m : catalog){
+                        System.out.print("- [" + i + "] " + m.getMovieName() + " (" + m.getIsbn() + "): " + m.getSynopsis());
 
-                        if (m instanceof MovieDescPlus mdp){
-                            System.out.print(" teaser: " + Arrays.toString(mdp.teaser));
+                        if (m instanceof IMovieDescExtended mdp){
+                            System.out.print(" teaser: " + Arrays.toString(mdp.getTeaser()));
                         }
 
                         System.out.println();
@@ -92,7 +92,7 @@ public class Main {
 
                     int index = in.nextInt();
 
-                    System.out.println("You have to pay " + v.playmovie(catalog.get(index).isbn, new ClientBox()) + "€");
+                    System.out.println("You have to pay " + v.playmovie(catalog.get(index).getIsbn(), new ClientBox()) + "€");
 
                 } catch (InvalidCredentialsException e){
                     connected = false;

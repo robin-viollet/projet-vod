@@ -2,6 +2,8 @@ package server;
 
 import server.exceptions.InvalidCredentialsException;
 import server.exceptions.SignInFailed;
+import server.stubs.IConnection;
+import server.stubs.IVODService;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

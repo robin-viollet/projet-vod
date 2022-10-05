@@ -1,7 +1,9 @@
 package server;
 
+import server.stubs.IMovieDescExtended;
+
 public class MovieDescExtended extends MovieDesc implements IMovieDescExtended {
-    public byte[] teaser;
+    protected byte[] teaser;
 
     public MovieDescExtended(String movieName, String isbn, String synopsis, byte[] teaser){
         super(movieName, isbn, synopsis);

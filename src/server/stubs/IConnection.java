@@ -1,4 +1,4 @@
-package server;
+package server.stubs;
 
 import server.exceptions.InvalidCredentialsException;
 import server.exceptions.SignInFailed;
